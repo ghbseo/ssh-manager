@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: ./src-tauri -> target
+
+      - name: Install npm deps
+        run: npm ci
+
+      - name: Build & release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "SSH 매니저 ${{ github.ref_name }}"
+          releaseBody: |
+            자동 빌드된 Windows 설치 파일입니다.
+
+            - NSIS 설치 파일: `SSH Manager_*_x64-setup.exe`
+            - MSI 설치 파일: `SSH Manager_*_x64_ko-KR.msi`, `*_en-US.msi`
+
+            서명 인증서가 없어 Windows SmartScreen 경고가 뜰 수 있습니다.
+            `추가 정보 → 실행`을 누르시면 설치가 진행됩니다.
+          releaseDraft: false
+          prerelease: false
