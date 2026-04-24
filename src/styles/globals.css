@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Apple light palette */
+    --background: 0 0% 100%;                 /* #ffffff */
+    --foreground: 240 3% 12%;                /* #1d1d1f */
+    --card: 0 0% 100%;
+    --card-foreground: 240 3% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 12%;
+    --primary: 211 100% 45%;                 /* #0071e3 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 9% 97%;                 /* #f5f5f7 */
+    --secondary-foreground: 240 3% 12%;
+    --muted: 240 9% 97%;                     /* #f5f5f7 */
+    --muted-foreground: 240 3% 44%;          /* #6e6e73 */
+    --accent: 240 9% 97%;
+    --accent-foreground: 240 3% 12%;
+    --destructive: 4 100% 50%;               /* #ff3b30 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 84%;                    /* #d2d2d7 */
+    --input: 240 3% 54%;                     /* #86868b */
+    --ring: 211 100% 45%;
+    --radius: 0.625rem;                      /* 10px base; buttons ~8px */
+  }
+
+  .dark {
+    /* Apple dark palette */
+    --background: 0 0% 0%;                   /* #000000 */
+    --foreground: 240 9% 97%;                /* #f5f5f7 */
+    --card: 240 3% 12%;                      /* #1d1d1f */
+    --card-foreground: 240 9% 97%;
+    --popover: 240 3% 15%;                   /* #272729 */
+    --popover-foreground: 240 9% 97%;
+    --primary: 211 100% 58%;                 /* #2997ff */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 3% 15%;                 /* #272729 */
+    --secondary-foreground: 240 9% 97%;
+    --muted: 240 3% 15%;
+    --muted-foreground: 240 3% 54%;          /* #86868b */
+    --accent: 240 3% 17%;                    /* #2a2a2c */
+    --accent-foreground: 240 9% 97%;
+    --destructive: 5 100% 61%;               /* #ff453a */
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 3% 17%;                    /* #2a2a2c */
+    --input: 240 3% 27%;                     /* #424245 */
+    --ring: 211 100% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+      "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", Pretendard,
+      "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  html,
+  body,
+  #root {
+    height: 100vh;
+    width: 100vw;
+  }
+  h1, h2, h3, h4 {
+    letter-spacing: -0.022em;
+  }
+  kbd {
+    font-family: inherit;
+  }
+}
+
+/* Scrollbar — thin, Apple-like */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--input));
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
