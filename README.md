@@ -1,6 +1,6 @@
 # SSH 매니저
 
-Termius 스타일의 Windows 데스크톱 SSH 프로필 관리자. Tauri 2 + React + TypeScript로 작성했고, Apple 팔레트 기반의 경량 UI 위에 xterm.js 내장 터미널을 제공합니다.
+Termius 스타일의 Windows 데스크톱 SSH 프로필 관리자. Tauri 2 + React + TypeScript로 작성했고, 경량 UI 위에 xterm.js 내장 터미널을 제공합니다.
 
 ![version](https://img.shields.io/badge/version-0.1.1-blue) ![platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 
@@ -10,7 +10,7 @@ Termius 스타일의 Windows 데스크톱 SSH 프로필 관리자. Tauri 2 + Rea
 - **앱 내장 터미널** — xterm.js + portable-pty (ConPTY)로 ssh 세션을 앱 안에서 실행
 - **다중 탭** — 여러 세션을 동시에 열고 탭으로 전환, 탭별 세션 유지
 - **자동 로그인** — Windows 자격 증명 관리자에 저장된 비밀번호/키 암호를 SSH 프롬프트 감지 시 자동 주입
-- **시스템/어둡게/밝게 테마** — Apple 팔레트 기반, 상단바 및 설정에서 전환 가능
+- **시스템/어둡게/밝게 테마** — 상단바 및 설정에서 전환 가능
 - **한국어 UI + 설치 마법사 한국어화**
 - 외부 터미널(wt/pwsh/cmd/WSL bash) 연동도 옵션으로 지원
 
@@ -53,7 +53,7 @@ npm run tauri build
 - `src-tauri\target\release\bundle\msi\SSH Manager_<ver>_x64_ko-KR.msi`
 - `src-tauri\target\release\bundle\msi\SSH Manager_<ver>_x64_en-US.msi`
 
-설치 마법사는 한국어/영어 선택 가능, Apple blue `>_` 배너 커스텀 반영.
+설치 마법사는 한국어/영어 선택 가능, 커스텀 `>_` 배너 반영.
 
 ## 디렉토리 구조
 
@@ -74,7 +74,7 @@ ssh-manager/
 │  │  ├─ tauri.ts                 # invoke 래퍼
 │  │  ├─ theme.ts                 # 시스템 테마 리스너
 │  │  └─ disableDevtools.ts       # DevTools 차단 가드
-│  └─ styles/globals.css          # Apple 팔레트 토큰
+│  └─ styles/globals.css          # Tailwind 테마 토큰
 └─ src-tauri/
    ├─ src/
    │  ├─ lib.rs                   # Tauri 엔트리, 상태 등록, DevTools 방어
@@ -124,4 +124,4 @@ type Profile = {
 
 ## 라이선스
 
-아직 미지정.
+[MIT](./LICENSE) © 2026 hbseo

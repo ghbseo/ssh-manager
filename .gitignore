@@ -11,6 +11,9 @@ vite.config.js
 vite.config.d.ts
 *.tsbuildinfo
 
+# Local design / scratch notes
+DESIGN-apple.md
+
 # Editor
 .vscode/*
 !.vscode/extensions.json
